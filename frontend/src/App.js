@@ -5,37 +5,37 @@ import axios from 'axios';
 
 function App() {
 
-  useEffect(()=>{
+  useEffect(() => {
     axios.get(`/api/values`)
-      .then(res=>{
-        console.log('res',res)
+      .then(res => {
+        console.log('res', res)
         setLists(res.data)
       })
   })
 
-  const changeHandler = (e)=>{
+  const changeHandler = (e) => {
     setValue(e.currentTarget.value)
   }
-  
-  const changeHandler = (e)=>{
-    e.preventDefault();
-    axios.post(`/api/value`,{value: value})
-    .then(res=>{
-      if(res.data.success){
-        console.log('res',res)
-        setLists([...lists,res.data])
-        setValue('')
-      }else{
-        alert('INSERT DB FAIL')
-      }
 
-      console.log('res',res)
-      setLists(res.data)
-    })
+  const submitHandler = (e) => {
+    e.preventDefault();
+    axios.post(`/api/value`, { value: value })
+      .then(res => {
+        if (res.data.success) {
+          console.log('res', res)
+          setLists([...lists, res.data])
+          setValue('')
+        } else {
+          alert('INSERT DB FAIL')
+        }
+
+        console.log('res', res)
+        setLists(res.data)
+      })
   }
 
-  useState[lists,setLists] = useState([])
-  useState[value,setValue] = useState('')
+  useState[lists, setLists] = useState([])
+  useState[value, setValue] = useState('')
 
   return (
     <div className="App">
@@ -43,20 +43,20 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <div className="container">
 
-          {lists && lists.map((list,index)=>{
+          {lists && lists.map((list, index) => {
             <li key={index}>{list.value}</li>
           })}
-          <br/>
+          <br />
 
           <form className="example" onSubmit={submitHandler}>
-            <input 
+            <input
               type="text"
               placeholder="input.."
               onChange={changeHandler}
             />
-            <button type="submit">OK</button>  
-          </form>  
-        </div> 
+            <button type="submit">OK</button>
+          </form>
+        </div>
       </header>
     </div>
   );
