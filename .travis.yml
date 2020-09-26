@@ -22,6 +22,16 @@ after_success:
     - docker push forthezorba/docker-backend 
     - docker push forthezorba/docker-nginx 
 
-
+deplpy:
+    provider: elasticbeanstalk
+    region: "ap-northeast-2"
+    app: "docker-app"
+    env: "DockerApp-env"
+    bucket_name: "elasticbeanstalk-ap-northeast-2-474791255118"
+    bucket_path: "elasticbeanstalk-ap-northeast-2-474791255118"
+    on:
+        branch: master
     
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
 

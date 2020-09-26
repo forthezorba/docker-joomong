@@ -26,7 +26,12 @@ services:
         volumes: 
             - /app/node_models
             - ./backend:/app
-
+        environment: 
+            MYSQL_HOST: mysql
+            MYSQL_USER: joomong
+            MYSQL_ROOT_PASSWORD: joomong1234
+            MYSQL_DATABASE: finance
+            MYSQL_PORT: 3306
     mysql:
         restart: unless-stoped
         build: ./mysql
@@ -39,3 +44,4 @@ services:
         environment:    
             MYSQL_ROOT_PASSWORD: root1234
             MYSQL_DATABASE: myapp
+
