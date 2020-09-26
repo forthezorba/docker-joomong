@@ -4,8 +4,8 @@ import './App.css';
 import axios from 'axios';
 
 function App() {
-  useState[lists, setLists] = useState([])
-  useState[value, setValue] = useState('')
+  const [lists, setLists] = useState([])
+  const [value, setValue] = useState('')
 
   useEffect(() => {
     axios.get(`/api/values`)
@@ -43,9 +43,9 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <div className="container">
 
-          {lists && lists.map((list, index) => {
+          {lists && lists.map((list, index) => (
             <li key={index}>{list.value}</li>
-          })}
+          ))}
           <br />
 
           <form className="example" onSubmit={submitHandler}>
