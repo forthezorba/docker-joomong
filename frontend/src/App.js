@@ -4,6 +4,8 @@ import './App.css';
 import axios from 'axios';
 
 function App() {
+  useState[lists, setLists] = useState([])
+  useState[value, setValue] = useState('')
 
   useEffect(() => {
     axios.get(`/api/values`)
@@ -34,8 +36,6 @@ function App() {
       })
   }
 
-  useState[lists, setLists] = useState([])
-  useState[value, setValue] = useState('')
 
   return (
     <div className="App">
