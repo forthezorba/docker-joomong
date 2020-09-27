@@ -20,15 +20,15 @@ after_success:
 
     - docker push forthezorba/docker-frontend 
     - docker push forthezorba/docker-backend 
-    - docker push forthezorba/docker-nginx 
+    - docker push forthezorba/docker-nginx  
 
 deplpy:
     provider: elasticbeanstalk
     region: "ap-northeast-2"
     app: "docker-app"
-    env: "DockerApp-env"
+    env: "DockerApp-env-1"
     bucket_name: "elasticbeanstalk-ap-northeast-2-474791255118"
-    bucket_path: "elasticbeanstalk-ap-northeast-2-474791255118"
+    bucket_path: "docker-app"
     on:
         branch: master
     
