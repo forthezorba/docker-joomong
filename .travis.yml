@@ -1,7 +1,5 @@
 language: generic
-
 sudo: required
-
 services:
     - docker
 
@@ -22,7 +20,7 @@ after_success:
     - docker push forthezorba/docker-backend 
     - docker push forthezorba/docker-nginx  
 
-deplpy:
+deploy:
     provider: elasticbeanstalk
     region: "ap-northeast-2"
     app: "docker-app"
