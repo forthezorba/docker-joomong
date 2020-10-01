@@ -3,21 +3,21 @@
     "containerDefinitions": [
         {
             "name": "frontend",
-            "image": "forthezorba/docker-frontend",
+            "image": "forthezorba/docker-frontend:latest",
             "hostname": "frontend",
             "essential": false,
             "memory": 128
         },
         {
             "name": "backend",
-            "image": "forthezorba/docker-backend",
+            "image": "forthezorba/docker-backend:latest",
             "hostname": "backend",
             "essential": false,
             "memory": 128
         },
         {
             "name": "nginx",
-            "image": "forthezorba/docker-nginx",
+            "image": "forthezorba/docker-nginx:latest",
             "hostname": "nginx",
             "essential": true,
             "portMappings": [
