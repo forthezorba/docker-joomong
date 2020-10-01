@@ -1,5 +1,7 @@
 language: generic
+
 sudo: required
+
 services:
     - docker
 
@@ -7,7 +9,7 @@ before_install:
     - docker build -t forthezorba/react-test-app -f ./frontend/Dockerfile.dev ./frontend
 
 script:
-    - docker run -e CI=true forthezorba/react-test-app npm run test
+    - docker run -e CI=true forthezorba/react-test-app npm test
 
 after_success:
     - docker build -t forthezorba/docker-frontend ./frontend
@@ -16,20 +18,21 @@ after_success:
 
     - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
 
-    - docker push forthezorba/docker-frontend 
-    - docker push forthezorba/docker-backend 
-    - docker push forthezorba/docker-nginx  
+    - docker push forthezorba/docker-frontend
+    - docker push forthezorba/docker-backend
+    - docker push forthezorba/docker-nginx
+
 
 deploy:
     provider: elasticbeanstalk
     region: "ap-northeast-2"
     app: "docker-app"
     env: "DockerApp-env"
-    bucket_name: "elasticbeanstalk-ap-northeast-2-474791255118"
+    bucket_name: elasticbeanstalk-ap-northeast-2-474791255118
     bucket_path: "docker-app"
     on:
-        branch: master
-    
-    access_key_id: $AWS_ACCESS_KEY
-    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    branch: master
+      
+      access_key_id: $AWS_ACCESS_KEY
+      secret_access_key: $AWS_SECRET_ACCESS_KEY
 
